@@ -28,7 +28,7 @@ def generate_bot_response(conversation_history):
         print(f"{conversations = }")
 
     time.sleep(10)
-    response_text = "Response will be provided shortly....."
+    response_text = "Hello! How can I assist you today?"
 
     return response_text
 
