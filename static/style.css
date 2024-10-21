@@ -58,7 +58,7 @@ body {
     outline: none;
 }
 #message-input:focus {
-    border-color: #1d9a38; 
+    border-color: #1d9a38;  /*Green */
     box-shadow: 0 0 5px rgba(29, 154, 56, 0.5); 
 }
 #send-button {
