@@ -13,21 +13,19 @@ app = Flask(__name__)
 
 def generate_bot_response(conversation_history):
     if len(conversation_history) == 1:
-        print("****First user query****")
         user_query_dict = conversation_history[0]
         conversations = []
         if user_query_dict['type'] == "user":
             user_query = user_query_dict['text']
-            print(f"{user_query = }")
+            # print(f"{user_query = }")
         else:
             print("User query not found!")
         print(f"{conversations = }")
     else:
-        print("****Consecutive user query****")
         user_query_dict = conversation_history[-1]
         if user_query_dict['type'] == "user":
             user_query = user_query_dict['text']
-            print(f"{user_query = }")
+            # print(f"{user_query = }")
         else:
             print("User query not found!")
         conversations = conversation_history[:-1]
