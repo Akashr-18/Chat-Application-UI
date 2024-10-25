@@ -1,3 +1,42 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const toggleSwitch = document.getElementById('toggle-switch');
+    const currentTheme = localStorage.getItem('theme');
+
+    // Set the initial theme
+    if (currentTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        toggleSwitch.checked = true;
+    }
+
+    // Add event listener to switch toggle
+    toggleSwitch.addEventListener('change', function () {
+        if (toggleSwitch.checked) {
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.body.classList.remove('dark-mode');
+            localStorage.setItem('theme', 'light');
+        }
+    });
+});
+
+function toggleTheme() {
+    const chatContainer = document.getElementById('chat-container');
+    const themeToggle = document.getElementById('theme-toggle');
+
+    // Toggle between light and dark themes
+    if (chatContainer.classList.contains('light-theme')) {
+        chatContainer.classList.remove('light-theme');
+        chatContainer.classList.add('dark-theme');
+        themeToggle.textContent = '☀️';  // Change icon to sun
+    } else {
+        chatContainer.classList.remove('dark-theme');
+        chatContainer.classList.add('light-theme');
+        themeToggle.textContent = '🌙';  // Change icon to moon
+    }
+}
+
+
 // Array to hold user messages and bot responses
 let conversationHistory = [];
 
@@ -5,6 +44,7 @@ function sendMessage() {
     const input = document.getElementById('message-input');
     const message = input.value.trim();
     if (message) {
+        const timestamp = new Date().toLocaleString();
         addMessage('user', message);
         conversationHistory.push({ type: 'user', text: message });
         input.value = '';

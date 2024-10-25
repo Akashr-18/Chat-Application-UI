@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div id="chat-container">
+    <div id="chat-container" class="light-theme">
         <div id="chat-header">
             <div class="avatar">B</div>
             <div>Bot</div>
+            <!-- Dark mode toggle button -->
+            <button id="theme-toggle" onclick="toggleTheme()">🌙</button>
         </div>
         <div id="chat-messages"></div>
         <div id="chat-input">
