@@ -84,7 +84,7 @@ function addMessage(sender, text) {
     const messagesContainer = document.getElementById('chat-messages');
     const messageElement = document.createElement('div');
     messageElement.classList.add('message', `${sender}-message`);
-    messageElement.textContent = text;
+    messageElement.innerHTML = text;
     messagesContainer.appendChild(messageElement);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }

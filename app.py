@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import time
 import os
+import markdown
 import google.generativeai as genai
 from google.generativeai.types import HarmCategory, HarmBlockThreshold
 
@@ -33,10 +34,12 @@ def generate_bot_response(conversation_history):
 
     generation_config = { "temperature": 0, "max_output_tokens": 200}    
     model = genai.GenerativeModel(model_name="gemini-1.5-flash", generation_config=generation_config)
-    prompt = "You are a helpful AI assistant. Provide your response in Markdown format. User query: " + user_query
+    prompt = "You are a helpful AI assistant. User query: " + user_query
     response = model.generate_content(prompt, safety_settings={HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE})
-    response = response.text  
-    return response 
+    # response = response.text
+    # return response
+    response_html = markdown.markdown(response.text)
+    return response_html
 
 @app.route('/')
 def index():
